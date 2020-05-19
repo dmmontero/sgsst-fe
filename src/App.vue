@@ -1,13 +1,22 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <app-menu></app-menu>
+    <!-- fill-height permite completar verticalmente para centrar-->
+    <v-container fill-height bg grid-list-md text-xs-center>
+      <v-row justify="center">
+        <router-view></router-view>
+      </v-row>
+    </v-container>
+  </v-app>
 </template>
-
+<script lang="js">
+import AppMenu from "@/components/AppMenu.vue";
+export default {
+   components: {
+    AppMenu
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
