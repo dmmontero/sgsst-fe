@@ -66,11 +66,7 @@
           // .then(r => console.log(r.token))
           // .catch(e => console.log(e));
       }
-    },
-    computed: {
-
     }
 }
 </script>
-
 <style scoped></style>
