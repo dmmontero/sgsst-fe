@@ -29,10 +29,18 @@
 
 export default  {
   name: 'app-menu',
+  props:{
+    role:String
+  },
   data() {
       return {
         drawer: false // Hide mobile side menu by default
       };
+  },
+  watch: {
+    role: function (val) {
+      console.log(val);
+    }
   }
 }
 </script>

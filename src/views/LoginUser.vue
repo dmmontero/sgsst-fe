@@ -40,9 +40,11 @@
 
   export default  {
     name: 'login-user',
-    props: [],
+    props: {
+      role: String
+    },
     mounted () {
-
+      console.log(`Load role ${this.role}`);
     },
     data () {
       return {
@@ -57,14 +59,13 @@
           loginUser(this.login,this.password)
           .then( result => {
              localStorage.setItem("token",result.data.token);
+             //emitir evento al loguearse
+             this.$emit('updateRole',result.data.Usuario.role)
              this.$router.push('/about');
           })
           .catch( error => {
             this.message = error.response.data.err.message
           });
-          // loginUser(this.login,this.password)
-          // .then(r => console.log(r.token))
-          // .catch(e => console.log(e));
       }
     }
 }

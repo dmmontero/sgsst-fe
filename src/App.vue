@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <app-menu></app-menu>
+    <app-menu :role="role"></app-menu>
     <!-- fill-height permite completar verticalmente para centrar-->
     <v-container fill-height bg grid-list-md text-xs-center>
       <v-row justify="center">
-        <router-view></router-view>
+        <router-view @updateRole="updateRole"></router-view>
       </v-row>
     </v-container>
   </v-app>
@@ -14,6 +14,16 @@ import AppMenu from "@/components/AppMenu.vue";
 export default {
    components: {
     AppMenu
+  },
+  data() {
+    return {
+      role: String
+    };
+  },
+  methods: {
+    updateRole(role) {
+      this.role=role;
+    }
   }
 }
 </script>
