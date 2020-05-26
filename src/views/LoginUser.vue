@@ -6,7 +6,7 @@
           <v-toolbar-title>Login Form</v-toolbar-title>
         </v-toolbar>
         <v-card-text>
-          <v-alert type="error" v-if="message">{{message}}</v-alert>
+          <v-alert type="error" v-if="message">{{ message }}</v-alert>
           <v-form>
             <v-text-field
               prepend-icon="person"
@@ -44,7 +44,6 @@
       role: String
     },
     mounted () {
-      console.log(`Load role ${this.role}`);
     },
     data () {
       return {
@@ -60,8 +59,9 @@
           .then( result => {
              localStorage.setItem("token",result.data.token);
              //emitir evento al loguearse
+             this.$isLogged.value = true;
              this.$emit('updateRole',result.data.Usuario.role)
-             this.$router.push('/about');
+             this.$router.push('/categoria');
           })
           .catch( error => {
             this.message = error.response.data.err.message

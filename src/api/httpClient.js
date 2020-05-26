@@ -17,7 +17,8 @@ const getAuthToken = () => localStorage.getItem("token");
  * Inject Authotization Header
  */
 const authInterceptor = config => {
-  config.headers["Authorization"] = getAuthToken();
+  // console.log("El token: " + getAuthToken());
+  config.headers["token"] = getAuthToken();
   return config;
 };
 

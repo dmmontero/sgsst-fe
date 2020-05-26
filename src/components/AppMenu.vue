@@ -9,7 +9,7 @@
       <v-spacer></v-spacer>
       <v-btn text to="/" exact>Home</v-btn>
       <v-btn text to="/about">About</v-btn>
-      <v-btn small to="/login" color="primary" fab dark>
+      <v-btn v-if="!isLogged" small to="/login" color="primary" fab dark>
         <v-icon>mdi-account-circle</v-icon>
       </v-btn>
     </v-toolbar>
@@ -34,12 +34,15 @@ export default  {
   },
   data() {
       return {
-        drawer: false // Hide mobile side menu by default
+        drawer: false, // Hide mobile side menu by default
+        isLogged: this.$isLogged.value
       };
   },
   watch: {
     role: function (val) {
       console.log(val);
+      this.isLogged = this.$isLogged.value;
+      // this.isLogged = true;
     }
   }
 }

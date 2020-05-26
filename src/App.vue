@@ -2,11 +2,13 @@
   <v-app>
     <app-menu :role="role"></app-menu>
     <!-- fill-height permite completar verticalmente para centrar-->
-    <v-container fill-height bg grid-list-md text-xs-center>
-      <v-row justify="center">
-        <router-view @updateRole="updateRole"></router-view>
-      </v-row>
-    </v-container>
+    <v-content>
+      <v-container fill-height bg grid-list-md text-xs-center>
+        <v-row justify="center">
+          <router-view @updateRole="updateRole"></router-view>
+        </v-row>
+      </v-container>
+    </v-content>
   </v-app>
 </template>
 <script lang="js">
@@ -17,7 +19,7 @@ export default {
   },
   data() {
     return {
-      role: String
+      role: 'anonymous'
     };
   },
   methods: {

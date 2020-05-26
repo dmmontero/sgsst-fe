@@ -8,6 +8,8 @@ import "@mdi/font/css/materialdesignicons.css";
 
 Vue.config.productionTip = false;
 
+Vue.prototype.$isLogged = { value: false };
+
 new Vue({
   router,
   vuetify,
