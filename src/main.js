@@ -1,17 +1,32 @@
 // import "@mdi/font/css/materialdesignicons.css";
 import Vue from "vue";
+import Vuex from "vuex";
+import VuexPersistence from "vuex-persist";
 import App from "./App.vue";
 import router from "./router";
 import vuetify from "./plugins/vuetify";
 import "@babel/polyfill";
 import "@mdi/font/css/materialdesignicons.css";
 
+Vue.use(Vuex);
+
 Vue.config.productionTip = false;
 
-Vue.prototype.$isLogged = { value: false };
+const store = new Vuex.Store({
+  state: {
+    isLogged: false
+  },
+  mutations: {
+    updateIsLogged(state, isLogged) {
+      state.isLogged = isLogged;
+    }
+  },
+  plugins: [new VuexPersistence().plugin]
+});
 
 new Vue({
   router,
   vuetify,
+  store,
   render: h => h(App)
 }).$mount("#app");

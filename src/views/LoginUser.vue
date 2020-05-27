@@ -58,10 +58,11 @@
           loginUser(this.login,this.password)
           .then( result => {
              localStorage.setItem("token",result.data.token);
-             localStorage.setItem("loggedIn", true);
+             this.$store.commit('updateIsLogged',true);
+            //  localStorage.setItem("loggedIn", true);
              //emitir evento al loguearse
-             this.$isLogged.value = true;
-             this.$emit('updateRole',result.data.Usuario.role)
+            //  this.$isLogged.value = true;
+            //  this.$emit('updateRole',result.data.Usuario.role)
              this.$router.push('/categoria');
           })
           .catch( error => {

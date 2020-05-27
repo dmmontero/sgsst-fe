@@ -7,9 +7,25 @@
       ></v-app-bar-nav-icon>
       <v-toolbar-title>Title</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn text to="/" exact>{{ isLogged }}</v-btn>
+      <v-btn text to="/" exact>Home</v-btn>
       <v-btn text to="/about">About</v-btn>
-      <v-btn v-if="!isLogged" small to="/login" color="primary" fab dark>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn
+            v-show="isLoggedIn"
+            small
+            @click="logout"
+            color="primary"
+            fab
+            light
+            v-on="on"
+          >
+            <v-icon>mdi-account-arrow-right</v-icon>
+          </v-btn>
+        </template>
+        <span>Salir ...</span>
+      </v-tooltip>
+      <v-btn v-show="!isLoggedIn" small to="/login" color="primary" fab dark>
         <v-icon>mdi-account-circle</v-icon>
       </v-btn>
     </v-toolbar>
@@ -29,21 +45,29 @@
 
 export default  {
   name: 'app-menu',
-  props:{
-    role:String
-  },
   data() {
       return {
         drawer: false, // Hide mobile side menu by default
-        isLogged:  localStorage.loggedIn.toLowerCase() === 'true'
       };
   },
-  watch: {
-    role: function (val) {
-      console.log(val);
-      // this.isLogged = this.$isLogged.value;
-       this.isLogged = localStorage.loggedIn.toLowerCase() === 'true';
+  methods: {
+    logout: function () {
+      this.$store.commit('updateIsLogged',false);
+      this.$router.push('/');
+
     }
+  },
+  // watch: {
+  //   role: function (val) {
+  //     console.log(val);
+  //     // this.isLogged = this.$isLogged.value;
+  //      this.isLogged = localStorage.loggedIn.toLowerCase() === 'true';
+  //   }
+  // },
+  computed:{
+      isLoggedIn(){
+        return this.$store.state.isLogged;
+      }
   }
 }
 </script>
