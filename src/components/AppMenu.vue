@@ -7,7 +7,7 @@
       ></v-app-bar-nav-icon>
       <v-toolbar-title>Title</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn text to="/" exact>Home</v-btn>
+      <v-btn text to="/" exact>{{ isLogged }}</v-btn>
       <v-btn text to="/about">About</v-btn>
       <v-btn v-if="!isLogged" small to="/login" color="primary" fab dark>
         <v-icon>mdi-account-circle</v-icon>
@@ -35,14 +35,14 @@ export default  {
   data() {
       return {
         drawer: false, // Hide mobile side menu by default
-        isLogged: this.$isLogged.value
+        isLogged:  localStorage.loggedIn.toLowerCase() === 'true'
       };
   },
   watch: {
     role: function (val) {
       console.log(val);
-      this.isLogged = this.$isLogged.value;
-      // this.isLogged = true;
+      // this.isLogged = this.$isLogged.value;
+       this.isLogged = localStorage.loggedIn.toLowerCase() === 'true';
     }
   }
 }
