@@ -8,7 +8,7 @@
       <v-toolbar-title>Title</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text to="/" exact>Home</v-btn>
-      <v-btn text to="/about">About</v-btn>
+      <v-btn text to="/upload/5ecb2bd9c4ddd335c893235f">Upload</v-btn>
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn
@@ -54,7 +54,6 @@ export default  {
     logout: function () {
       this.$store.commit('updateIsLogged',false);
       this.$router.push('/');
-
     }
   },
   // watch: {

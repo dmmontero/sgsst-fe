@@ -1,38 +1,44 @@
 <template>
-  <v-layout justify-center>
-    <v-flex xs12 sm8 md4>
-      <v-card class="elevation-12">
-        <v-toolbar dark color="primary">
-          <v-toolbar-title>Login Form</v-toolbar-title>
-        </v-toolbar>
-        <v-card-text>
-          <v-alert type="error" v-if="message">{{ message }}</v-alert>
-          <v-form>
-            <v-text-field
-              prepend-icon="person"
-              name="login"
-              label="Login"
-              id="login"
-              v-model="login"
-              type="text"
-            ></v-text-field>
-            <v-text-field
-              prepend-icon="lock"
-              name="password"
-              label="Password"
-              id="password"
-              type="password"
-              v-model="password"
-            ></v-text-field>
-          </v-form>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn dark color="primary" v-on:click="authenticate">Login</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <v-container bg grid-list-md text-xs-center>
+    <v-row justify="center">
+      <v-layout justify-center fill-height>
+        <v-flex xs12 sm8 md4>
+          <v-card class="elevation-12">
+            <v-toolbar dark color="primary">
+              <v-toolbar-title>Login Form</v-toolbar-title>
+            </v-toolbar>
+            <v-card-text>
+              <v-alert type="error" v-if="message">{{ message }}</v-alert>
+              <v-form>
+                <v-text-field
+                  prepend-icon="person"
+                  name="login"
+                  label="Login"
+                  id="login"
+                  v-model="login"
+                  type="text"
+                ></v-text-field>
+                <v-text-field
+                  prepend-icon="lock"
+                  name="password"
+                  label="Password"
+                  id="password"
+                  type="password"
+                  v-model="password"
+                ></v-text-field>
+              </v-form>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn dark color="primary" v-on:click="authenticate"
+                >Login</v-btn
+              >
+            </v-card-actions>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-row>
+  </v-container>
 </template>
 <script lang="js">
 
@@ -59,6 +65,7 @@
           .then( result => {
              localStorage.setItem("token",result.data.token);
              this.$store.commit('updateIsLogged',true);
+             this.$store.commit('updateUser',result.data);
             //  localStorage.setItem("loggedIn", true);
              //emitir evento al loguearse
             //  this.$isLogged.value = true;

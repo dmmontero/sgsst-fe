@@ -3,11 +3,14 @@
     <app-menu :role="role"></app-menu>
     <!-- fill-height permite completar verticalmente para centrar-->
     <v-content>
-      <v-container fill-height bg grid-list-md text-xs-center>
+      <v-container bg grid-list-md text-xs-center>
+        <router-view @updateRole="updateRole"></router-view>
+      </v-container>
+      <!-- <v-container bg grid-list-md text-xs-center>
         <v-row justify="center">
           <router-view @updateRole="updateRole"></router-view>
         </v-row>
-      </v-container>
+      </v-container> -->
     </v-content>
   </v-app>
 </template>

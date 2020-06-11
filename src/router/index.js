@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import LoginUser from "../views/LoginUser.vue";
 import CategoriaDocumento from "../views/CategoriaDocumento.vue";
+import UploadDocumento from "../views/UploadDocumento.vue";
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
     path: "/categoria",
     name: "CategoriaDocumento",
     component: CategoriaDocumento
+  },
+  {
+    path: "/upload/:idCategoria",
+    name: "UploadDocumento",
+    component: UploadDocumento
   },
   {
     path: "/about",

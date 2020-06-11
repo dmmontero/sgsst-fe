@@ -14,11 +14,15 @@ Vue.config.productionTip = false;
 
 const store = new Vuex.Store({
   state: {
-    isLogged: false
+    isLogged: false,
+    user: null
   },
   mutations: {
     updateIsLogged(state, isLogged) {
       state.isLogged = isLogged;
+    },
+    updateUser(state, _user) {
+      state.user = _user;
     }
   },
   plugins: [new VuexPersistence().plugin]
