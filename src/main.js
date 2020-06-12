@@ -5,10 +5,13 @@ import VuexPersistence from "vuex-persist";
 import App from "./App.vue";
 import router from "./router";
 import vuetify from "./plugins/vuetify";
+import ApiPlugIn from "./api/plugin-api";
 import "@babel/polyfill";
 import "@mdi/font/css/materialdesignicons.css";
 
 Vue.use(Vuex);
+
+Vue.use(ApiPlugIn, "$api");
 
 Vue.config.productionTip = false;
 

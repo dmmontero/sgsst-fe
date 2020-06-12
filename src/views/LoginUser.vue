@@ -42,7 +42,7 @@
 </template>
 <script lang="js">
 
-  import { loginUser } from '../api/user.api';
+  // import { loginUser } from '../api/user.api';
 
   export default  {
     name: 'login-user',
@@ -61,7 +61,7 @@
     methods: {
       authenticate: function(){
         this.message = '';
-          loginUser(this.login,this.password)
+          this.$api.loginUser(this.login,this.password)
           .then( result => {
              localStorage.setItem("token",result.data.token);
              this.$store.commit('updateIsLogged',true);

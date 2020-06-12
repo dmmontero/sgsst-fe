@@ -14,13 +14,12 @@
 </template>
 
 <script lang="js">
-import { getAlltegoriasDocumento } from '../api/categoria-documento.api'
 
   export default  {
     name: 'categoria-documento',
     props: [],
     mounted () {
-       getAlltegoriasDocumento()
+       this.$api.getAlltegoriasDocumento()
        .then( result => {
              this.categorias = result.data.categorias;
           })
